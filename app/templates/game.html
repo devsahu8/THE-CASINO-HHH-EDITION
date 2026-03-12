@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10 text-center">
+        <div class="d-flex justify-content-between align-items-center mb-4 p-3" style="background: #000; border: 2px solid var(--hhh-green);">
+            <h4 class="m-0 text-white">SUPERSTAR: {{ current_user.username }}</h4>
+            <h3 class="m-0" style="color: var(--hhh-green); font-weight: 900;">BANK: ${{ current_user.amount|round(2) }}</h3>
+        </div>
+
+        <div class="p-5 mb-4 rounded" style="background: rgba(0,0,0,0.9); border: 4px solid var(--hhh-green); box-shadow: 0 0 30px rgba(30,215,96,0.2);">
+            <div class="row justify-content-center">
+                {% if slot_result %}
+                    {% for img in slot_result %}
+                        <div class="col-3 mx-2 p-2 bg-white rounded border border-3 border-success">
+                            <img src="{{ url_for('static', filename='images/' + img) }}" class="img-fluid">
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for i in range(3) %}
+                        <div class="col-3 mx-2 rounded d-flex align-items-center justify-content-center" style="height: 150px; background: #0a0a0a; border: 2px dashed var(--hhh-green);">
+                            <span style="color: var(--hhh-green); font-weight: 900;">READY?</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% if complement %}
+        <div class="py-3 mb-4" style="background: #000; border: 3px solid #fff; box-shadow: 0 0 15px var(--hhh-green);">
+            <h2 class="text-uppercase fw-bold m-0" style="color: var(--hhh-green);">{{ complement }}</h2>
+            {% if X is not none %}
+                <p class="m-0 text-white h4 mt-2">X-FACTOR: <span style="color: var(--hhh-green);">{{ X|round(2) }}x</span></p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="card p-4 d-inline-block shadow-lg" style="min-width: 450px;">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3 text-start">
+                    <label class="form-label">Stake Your Claim ($)</label>
+                    {{ form.bet(class="form-control form-control-lg text-center", style="font-size: 2rem;") }}
+                </div>
+                <button type="submit" class="btn btn-hhh btn-lg w-100 py-3" style="font-size: 1.5rem; letter-spacing: 2px;">ROLL</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

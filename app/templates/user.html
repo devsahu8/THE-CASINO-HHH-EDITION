@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <h3 style="color: var(--hhh-green);">{{ username }}</h3>
+            <p class="text-white small text-uppercase mt-2">Authority Balance</p>
+            <h1 class="fw-black" style="color: #fff;">${{ credits|round(2) }}</h1>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h4 class="text-uppercase mb-3" style="color: var(--hhh-green);">Corporate Funding</h4>
+            <p class="text-white">Collect your backstage sponsorship credits here.</p>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.deposit(class="form-control form-control-lg", placeholder="Amount") }}
+                </div>
+                {{ form.submit(class="btn btn-hhh px-4") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

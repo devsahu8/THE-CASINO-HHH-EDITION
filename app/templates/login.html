@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5 card p-4 shadow-lg">
+        <h2 class="text-center text-uppercase mb-4" style="color: var(--hhh-green);">Authority Access</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="Username") }}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Password") }}
+            </div>
+            <div class="form-check mb-4">
+                {{ form.remember_me(class="form-check-input") }}
+                <label class="form-check-label text-white fw-bold ms-2">remember me</label>
+            </div>
+            {{ form.submit(class="btn btn-hhh w-100 py-2") }}
+        </form>
+    </div>
+</div>
+{% endblock %}

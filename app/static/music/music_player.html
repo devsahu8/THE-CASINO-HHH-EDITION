@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<audio id="music" autoplay loop>
+    <source src="casino.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const music=document.getElementById("music");
+
+window.addEventListener("message",(event)=>{
+    if(event.data==="toggle"){
+        if(music.paused){
+            music.play();
+        }else{
+            music.pause();
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>
