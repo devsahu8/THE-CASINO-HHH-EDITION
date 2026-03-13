@@ -4,13 +4,22 @@ __pycache__/
 *$py.class
 venv/
 env/
-.flaskenv
+# Keep your actual secret keys private
+.env
 
 # --- Database ---
-# Don't upload your local player data/amounts!
+# We ignore the actual data files, but NOT the migration scripts
 instance/
 *.db
 *.sqlite
+# The specific local database file
+app.db
+
+# --- Vercel/Deployment ---
+.vercel/
+dist/
+build/
+node_modules/
 
 # --- Operating System ---
 .DS_Store
@@ -19,7 +28,7 @@ Thumbs.db
 # --- IDEs ---
 .vscode/
 .idea/
-migrations
-app.db
-env.py
-config.py
+
+# --- Project Specific ---
+# Ignore your private environment variables, but keep the public app config
+# (Ensure .flaskenv is NOT in this list so it pushes to GitHub)
